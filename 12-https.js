@@ -1,5 +1,4 @@
-const http = require('http')
-
+const http = require("http")
 const server = http.createServer((req, res) => {
     console.log(req)
     if(req.url === '/'){
@@ -7,6 +6,9 @@ const server = http.createServer((req, res) => {
     }
     if(req.url === '/about'){
         res.end('jennie')
+    }
+    if(req.url === "/lisa"){
+        res.end("lalisa money bitch")
     }
     res.end(`
     <h1>ooops</h1>
