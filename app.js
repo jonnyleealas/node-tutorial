@@ -1,9 +1,13 @@
-const http = require('http')
+var http = require('http')
+var fs = require('fs')
 
-const server = http.createServer()
+http.createServer(function (req, res){
+        const fileStream = fs.createReadStream('./content/biggerFile.txt', 'utf-8')
+        fileStream.on('open',()=>{
+           fileStream.pipe(res)
+        })
 
-server.on('request', (req, res) => {
-    res.end('welcome home')
-})
-
-server.listen(5000) 
+        fileStream.on('error',(err)=>{
+            res.end(err)
+        })
+    }).listen(5000)
